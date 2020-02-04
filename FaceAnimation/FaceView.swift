@@ -94,6 +94,7 @@ class FaceView: UIView {
         let path = UIBezierPath()
         
         path.move(to: start)
+        path.lineWidth = lineWith
         path.addCurve(to: end, controlPoint1: cp1, controlPoint2: cp2)
         
         return path
