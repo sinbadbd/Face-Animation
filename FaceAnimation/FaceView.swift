@@ -9,13 +9,27 @@
 import UIKit
 
 class FaceView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+ 
+    var scale: CGFloat = 0.9 // Padding all side
+    
+    
+    private var skullRadius : CGFloat {
+        return min(bounds.size.width, bounds.size.height) / 2 * scale
     }
-    */
-
+    
+    private var skullCenter: CGPoint {
+        return CGPoint(x: bounds.midX, y: bounds.midY)
+    }
+    
+    private func pathSkull() -> UIBezierPath {
+    
+        let path = UIBezierPath(arcCenter: skullCenter, radius: skullRadius, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: false)
+        path.lineWidth = 5
+        return path
+    
+    }
+    override func draw(_ rect: CGRect) {
+        UIColor.blue.set()
+        pathSkull().stroke() 
+    } 
 }
